@@ -85,6 +85,12 @@ describe("compressingStr", () => {
     const result = compressingStr(input);
     expect(result).toEqual("3ab");
   });
+
+  test("should return 3ab2c4da", () => {
+    const input = "aaabccdddda";
+    const result = compressingStr(input);
+    expect(result).toEqual("3ab2c4da");
+  });
 });
 
 describe("checkingForUniqueness", () => {

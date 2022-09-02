@@ -60,34 +60,51 @@ export const arrDedupeWithSet = (arr) => {
 
 export const compressingStr = (str) => {
   let res = "";
-  if (str.length === 0) return res;
-  compressing(str);
-  return res;
-
-  function compressing(str) {
-    const len = str.length;
-    for (let i = 0; i < len; i++) {
-      if (str[i] !== str[i + 1]) {
-        const tempStr = str.substring(0, i + 1);
-        // console.log("tempStr:" + tempStr + "" + tempStr.length);
-        if (tempStr.length !== 1) {
-          res += tempStr.length + tempStr[0];
-        } else {
-          res += tempStr[0];
-        }
-        // console.log("res:" + res);
-        console.log(i + "" + str);
-        if (str[i + 1] !== undefined) {
-          str = str.substring(i + 1);
-          console.log("new:" + str);
-          compressing(str);
-        } else {
-          return res;
-        }
+  let count = 1;
+  for (let i = 0; i < str.length; i++) {
+    let cur = str[i];
+    let next = str[i + 1];
+    if (cur === next) {
+      count++;
+    } else {
+      if (count !== 1) {
+        res += String(count) + cur;
+      } else {
+        res += cur;
       }
+      count = 1;
     }
   }
+  return res.length < str.length ? res : str;
 };
+
+// export const compressingStr = (str) => {
+//   let res = "";
+//   if (str.length === 0) return res;
+//   compressing(str);
+//   return res;
+
+//   function compressing(str) {
+//     for (let i = 0; i < str.length; i++) {
+//       if (str[i] !== str[i + 1]) {
+//         const tempStr = str.substring(0, i + 1);
+//         if (tempStr.length !== 1) {
+//           res += tempStr.length + tempStr[0];
+//         } else {
+//           res += tempStr[0];
+//         }
+
+//         if (str[i + 1] !== undefined) {
+//           //   console.log("hi");
+//           //   return res;
+//           // } else {
+//           str = str.substring(i + 1);
+//           compressing(str);
+//         }
+//       }
+//     }
+//   }
+// };
 
 // Question #4: Checking for Uniqueness
 // Write an algorithm that determines whether all the elements in a string are unique. You may not convert the string into an array or use array methods to solve this problem. The algorithm should return a boolean.
