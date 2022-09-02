@@ -25,9 +25,24 @@ export const stringToUrls = (str) => {
 // Write an algorithm that removes duplicates from an array. Do not use a function like filter() to solve this. Once you have solved the problem, demonstrate how it can be solved with filter(). Solve the problem with and without recursion.
 
 // Example
-// Input: [7, 9, "hi", 12, "hi" 7, 53]
+// Input: [7, 9, "hi", 12, "hi", 7, 53]
 
 // Output: [7, 9, "hi", 12, 53]
+
+export const arrDedupe = (arr) => {
+  if (arr.length <= 1) return arr;
+  let map = {};
+  let res = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (!map[arr[i]]) {
+      map[arr[i]] = 1;
+      res.push(arr[i]);
+    } else {
+      map[arr[i]]++;
+    }
+  }
+  return res;
+};
 
 // Question #3: Compressing Strings
 // Write an algorithm that takes a string with repeated characters and compresses them, using a number to show how many times the repeated character has been compressed. For instance, aaa would be written as 3a. Solve the problem with and without recursion.
