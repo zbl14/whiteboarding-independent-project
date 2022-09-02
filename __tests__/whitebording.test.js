@@ -2,6 +2,7 @@ import {
   stringToUrls,
   arrDedupe,
   arrDedupeWithSet,
+  compressingStr,
 } from "../src/js/whitebording";
 
 describe("stringToUrls", () => {
@@ -40,7 +41,6 @@ describe("arrDedupe", () => {
   test("should return deduped array", () => {
     const input = [7, 9, "hi", 12, "hi", 7, 53];
     const result = arrDedupe(input);
-    console.log(result);
     expect(result).toEqual([7, 9, "hi", 12, 53]);
   });
 });
@@ -63,4 +63,24 @@ describe("arrDedupeWithSet", () => {
     const result = arrDedupeWithSet(input);
     expect(result).toEqual([7, 9, "hi", 12, 53]);
   });
+});
+
+describe("compressingStr", () => {
+  test("return empty string if the input is an empty string", () => {
+    const input = "";
+    const result = compressingStr(input);
+    expect(result).toEqual("");
+  });
+
+  test("should return aaa", () => {
+    const input = "aaa";
+    const result = compressingStr(input);
+    expect(result).toEqual("3a");
+  });
+
+  // test("should return 3ab2c4da", () => {
+  //   const input = "aaabccdddda";
+  //   const result = compressingStr(input);
+  //   expect(result).toEqual("3ab2c4da");
+  // });
 });

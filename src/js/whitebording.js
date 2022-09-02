@@ -58,6 +58,37 @@ export const arrDedupeWithSet = (arr) => {
 
 // Output: "3ab2c4da"
 
+export const compressingStr = (str) => {
+  let res = "";
+  if (str.length === 0) return res;
+  compressing(str);
+  return res;
+
+  function compressing(str) {
+    const len = str.length;
+    for (let i = 0; i < len; i++) {
+      if (str[i] !== str[i + 1]) {
+        const tempStr = str.substring(0, i + 1);
+        // console.log("tempStr:" + tempStr + "" + tempStr.length);
+        if (tempStr.length !== 1) {
+          res += tempStr.length + tempStr[0];
+        } else {
+          res += tempStr[0];
+        }
+        // console.log("res:" + res);
+        console.log(i + "" + str);
+        if (str[i + 1] !== undefined) {
+          str = str.substring(i + 1);
+          console.log("new:" + str);
+          compressing(str);
+        } else {
+          return res;
+        }
+      }
+    }
+  }
+};
+
 // Question #4: Checking for Uniqueness
 // Write an algorithm that determines whether all the elements in a string are unique. You may not convert the string into an array or use array methods to solve this problem. The algorithm should return a boolean.
 
@@ -69,6 +100,18 @@ export const arrDedupeWithSet = (arr) => {
 // Input: "copyright"
 
 // Output: true
+
+export const checkingForUniqueness = (str) => {
+  let map = {};
+  for (let i = 0; i < str.length; i++) {
+    if (!map[str[i]]) {
+      map[str[i]] = 1;
+    } else {
+      return false;
+    }
+  }
+  return true;
+};
 
 // Question #5: Array Sorting
 // Write an algorithm that sorts an array without using the sort() method. There are many different sorting algorithms — take the time to read about the following:
