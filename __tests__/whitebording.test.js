@@ -12,4 +12,10 @@ describe("stringToUrls", () => {
     const result = stringToUrls(input);
     expect(result).toEqual("Jasmine%20Ann%20Jones");
   });
+
+  test("should remove space before and/or after", () => {
+    const input = "   Jasmine Ann Jones   ";
+    const result = stringToUrls(input);
+    expect(result).toEqual("Jasmine%20Ann%20Jones");
+  });
 });

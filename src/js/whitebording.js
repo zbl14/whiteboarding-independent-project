@@ -10,6 +10,7 @@
 
 export const stringToUrls = (str) => {
   if (str === "") return "";
+  str = str.trim();
   for (let i = 0; i < str.length; i++) {
     if (str[i] === " ") {
       const left = str.substring(0, i);
