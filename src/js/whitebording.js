@@ -103,7 +103,8 @@ export const compressingStr = (str) => {
 
 export const checkingForUniqueness = (str) => {
   let map = {};
-  for (let i = 0; i < str.length; i++) {
+  const len = str.length;
+  for (let i = 0; i < len; i++) {
     if (!map[str[i]]) {
       map[str[i]] = 1;
     } else {

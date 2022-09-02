@@ -3,6 +3,7 @@ import {
   arrDedupe,
   arrDedupeWithSet,
   compressingStr,
+  checkingForUniqueness,
 } from "../src/js/whitebording";
 
 describe("stringToUrls", () => {
@@ -83,4 +84,18 @@ describe("compressingStr", () => {
   //   const result = compressingStr(input);
   //   expect(result).toEqual("3ab2c4da");
   // });
+});
+
+describe("checkingForUniqueness", () => {
+  test("should return false when input is hello", () => {
+    const input = "hello";
+    const result = checkingForUniqueness(input);
+    expect(result).toEqual(false);
+  });
+
+  test("should return true when input is copyright", () => {
+    const input = "copyright";
+    const result = checkingForUniqueness(input);
+    expect(result).toEqual(true);
+  });
 });
