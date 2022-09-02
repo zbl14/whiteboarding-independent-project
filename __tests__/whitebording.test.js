@@ -4,6 +4,7 @@ import {
   arrDedupeWithSet,
   compressingStr,
   checkingForUniqueness,
+  quickSort,
 } from "../src/js/whitebording";
 
 describe("stringToUrls", () => {
@@ -97,5 +98,13 @@ describe("checkingForUniqueness", () => {
     const input = "copyright";
     const result = checkingForUniqueness(input);
     expect(result).toEqual(true);
+  });
+});
+
+describe("quickSort", () => {
+  test("should return array in ascending order", () => {
+    const input = [9, 2, 7, 12];
+    const result = quickSort(input, 0, input.length - 1);
+    expect(result).toEqual([2, 7, 9, 12]);
   });
 });
